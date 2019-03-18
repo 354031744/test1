@@ -42,4 +42,8 @@ public class ArcTypeController {
     public ResponseEntity<String> setDisplayStatus(@RequestParam("id") Integer id, @RequestParam("status") Integer status){
         return ResponseEntity.ok(arcTypeService.setDisplayStatus(id, status));
     }
+    @GetMapping("t")
+    public String t(){
+        return "123";
+    }
 }

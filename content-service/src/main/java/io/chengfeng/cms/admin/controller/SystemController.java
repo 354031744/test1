@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemController {
     @GetMapping("test")
     public String setFriendshiplink(){
-        return "≤‚ ‘"
+        return "test11"
     }
 }

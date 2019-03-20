@@ -1,0 +1,51 @@
+server:
+    port: 9061
+    servlet:
+      context-path: "/v1"
+
+spring:
+  application:
+    name: cms-content-server
+  datasource:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:content_management}?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+      username: ${DB_USER:root}
+      password: ${DB_PWD:root}
+  servlet:
+      multipart:
+        max-file-size: 1024MB
+
+api:
+  resourceUrl: ${RES_URL:http://127.0.0.1/}
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+
+mapper:
+    mappers:
+        - tk.mybatis.springboot.util.MyMapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+springfox:
+    documentation:
+        swagger:
+            v2:
+                path: /api-docs
+
+debug:
+  enable: true
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: debug
